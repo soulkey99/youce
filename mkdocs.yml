@@ -1,0 +1,28 @@
+site_name: 优测app接口文档
+site_url:
+repo_url:
+repo_name: Gitlab
+site_description: api document for youce app.
+site_author: menglei
+site_favicon: favicon.ico
+copyright: null
+docs_dir: ./apidocs/
+site_dir: ./public/apidocs/
+theme: mkdocs
+pages:
+ - 目录: 'index.md'
+ - 基本信息: 'basic.md'
+ - 用户: 'user.md'
+ - 测验: 'quiz.md'
+ - 结果: 'result.md'
+
+
+
+extra:
+    version: 1.0
+use_directory_urls: true
+markdown_extensions:
+    - smarty
+    - toc:
+        permalink: True
+    - sane_lists

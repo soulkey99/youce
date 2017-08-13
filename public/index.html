@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>优测Test</title>
+    <script src="//cdn.bootcss.com/zepto/1.2.0/zepto.js"></script>
+</head>
+<body>
+<div>
+    <input id="userid" type="text" value="aaa">
+    <input id="token" type="text" value="xxx">
+    <input id="category" type="text" value="xxx">
+    <button onclick="dologin()">login</button>
+</div>
+<div>
+    <input id="grade" type="text" value="初中">
+    <input id="subject" type="text" value="数学">
+    <button onclick="doNewExercise()">new Exercise</button>
+</div>
+<div>
+    <input id="q_id" type="text" value="584509633b06901b6412d86d">
+    <input id="choice_id" type="text" value="584509633b06901b6412d869">
+    <button onclick="doCheck()">check</button>
+</div>
+<div>
+    <button onclick="doLogout()">Logout</button>
+</div>
+</body>
+<script>
+    function dologin() {
+        $.ajax({
+            type: "POST",
+            url: "/rest/login",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({userid: $("#userid").val(), token: $("#token").val(), category: "cate"}),
+            success: function (data) {
+                alert(data);
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    }
+    function doNewExercise() {
+        $.ajax({
+            type: "POST",
+            url: "/rest/exercise",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({grade: $("#grade").val(), subject: $("#subject").val()}),
+            success: function (dta) {
+                alert(JSON.stringify(dta));
+            },
+            error: function () {
+                alert("error");
+            }
+        })
+    }
+    function doCheck() {
+        $.ajax({
+            type: "POST",
+            url: "/rest/exercise/58cd71a9ba2a740cac2481f0/check",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({q_id: $("#q_id").val(), choice_id: $("#choice_id").val()}),
+            success: function (data) {
+                alert(JSON.stringify(data));
+            },
+            error: function () {
+                alert("error");
+            }
+        })
+    }
+    function doLogout() {
+        $.ajax({
+            type: "post",
+            url: "/rest/logout",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                alert(JSON.stringify(data));
+            },
+            error: function () {
+                alert("error");
+            }
+        })
+    }
+</script>
+</html>
